@@ -33,13 +33,21 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Contact from "./components/pages/Contact"
 import Home from "./components/pages/HomePage"
+import VueRouter from 'vue-router'
 
-const routers = [
-	{path: '/contact',}
-]
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+	routes: [
+		{ path: '/contact', component: Contact},
+		{ path: '/home', component: Home}
+	],
+	mode: 'history'
+})
+
 
 const app = new Vue({
     el: '#app',
-    render: h => h(AppRoot),
-    routers
+    router: router,
+    render: h => h(AppRoot)
 });
